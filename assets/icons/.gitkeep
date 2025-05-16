@@ -1,0 +1,5 @@
+const weatherIconMap = {
+    '01d': 'assets/icons/day_clear.svg',
+    '01n': 'assets/icons/night_half_moon_clear.svg',
+    // ... and so on
+};
