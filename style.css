@@ -1,3 +1,5 @@
+/* styles.css */
+
 /* Weather-specific animations */
 .sunny-bg {
     background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
@@ -118,7 +120,7 @@
         width: 60px;
         height: 60px;
     }
-    
+
     .cloud1 { width: 80px; height: 48px; }
     .cloud2 { width: 120px; height: 72px; }
     .cloud3 { width: 60px; height: 36px; }
