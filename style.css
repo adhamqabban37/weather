@@ -1,0 +1,457 @@
+:root {
+    --bg-color: #121212; /* Very dark grey / black */
+    --primary-card-bg: #1e1e1e; /* Slightly lighter dark grey */
+    --secondary-card-bg: #2a2a2a;
+    --text-color-light: #f0f0f0;
+    --text-color-dark: #333333;
+    --accent-color: #e53935; /* Vibrant Red */
+    --accent-color-darker: #c62828;
+    --border-color: #444;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --hover-glow: rgba(229, 57, 53, 0.3);
+
+    --font-primary: 'Roboto', sans-serif;
+    --font-display: 'Orbitron', sans-serif; /* For a techy feel */
+    --border-radius-main: 12px;
+    --border-radius-small: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--text-color-light);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for scroll */
+    min-height: 100vh;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1200px; /* Max width for the whole app */
+    background-color: var(--primary-card-bg); /* Main app background */
+    border-radius: var(--border-radius-main);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    overflow: hidden; /* Contains all elements */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: var(--secondary-card-bg); /* Header distinct background */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    margin-right: 10px;
+    color: var(--accent-color); /* Red logo icon */
+}
+
+header h1 {
+    font-family: var(--font-display);
+    font-size: 1.8em;
+    color: var(--text-color-light);
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+#city-search-input {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
+    background-color: var(--bg-color);
+    color: var(--text-color-light);
+    font-size: 0.9em;
+    outline: none;
+    transition: border-color 0.3s ease;
+    min-width: 200px;
+}
+
+#city-search-input:focus {
+    border-color: var(--accent-color);
+}
+
+#search-button {
+    padding: 10px;
+    background-color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    border-left: none;
+    border-radius: 0 var(--border-radius-small) var(--border-radius-small) 0;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-button:hover {
+    background-color: var(--accent-color-darker);
+}
+
+/* Main Dashboard Layout */
+.weather-dashboard {
+    display: flex;
+    flex-direction: column; /* Stack main display and favorites */
+    gap: 20px;
+    padding: 25px;
+}
+
+.main-display-area {
+    /* Styles for the large searched city card */
+}
+
+.favorites-area h2 {
+    font-family: var(--font-display);
+    margin-bottom: 15px;
+    color: var(--text-color-light);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* General Weather Card Styles */
+.weather-card {
+    background: var(--secondary-card-bg);
+    border-radius: var(--border-radius-main);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+    overflow: hidden;
+    position: relative; /* For animations */
+    border: 1px solid transparent; /* For potential glow effect */
+}
+
+.weather-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-color), 0 0 15px var(--hover-glow);
+    border-color: var(--accent-color);
+}
+
+/* Searched City Card Specifics */
+#searched-city-card {
+    background: linear-gradient(145deg, var(--secondary-card-bg), #282828); /* Slightly different texture */
+    padding: 25px 30px;
+    text-align: left; /* More detailed view */
+}
+
+#searched-city-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
+#searched-city-card .city-name {
+    font-family: var(--font-display);
+    font-size: 2.2em;
+    color: var(--accent-color);
+    font-weight: 700;
+}
+#searched-city-card .current-time {
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+#searched-city-card .card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; /* Or space-between */
+    margin: 20px 0;
+    flex-wrap: wrap; /* Allow wrapping on smaller views inside card */
+}
+
+.main-weather-icon {
+    width: 120px;
+    height: 120px;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+
+.main-temperature {
+    font-size: 4.5em;
+    font-weight: 700;
+    color: var(--text-color-light);
+    font-family: var(--font-display);
+}
+
+.main-weather-description {
+    font-size: 1.5em;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: #ccc;
+    align-self: flex-end; /* Aligns description nicely if temp is large */
+    margin-left: 10px; /* Spacing from temperature */
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+.detail-item {
+    background-color: var(--bg-color);
+    padding: 10px;
+    border-radius: var(--border-radius-small);
+    text-align: center;
+}
+.detail-label {
+    display: block;
+    font-size: 0.8em;
+    color: #aaa;
+    margin-bottom: 5px;
+}
+.detail-item span:not(.detail-label) {
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+
+/* Small Favorite Cards */
+.small-card .city-name {
+    font-size: 1.3em;
+    font-weight: 700;
+    color: var(--text-color-light);
+    margin-bottom: 10px;
+}
+.small-card .card-body-small {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+.small-card .weather-icon {
+    width: 60px;
+    height: 60px;
+}
+.small-card .temperature {
+    font-size: 2em;
+    font-weight: 700;
+    font-family: var(--font-display);
+}
+.small-card .weather-description {
+    font-size: 1em;
+    text-transform: capitalize;
+    color: #bbb;
+}
+
+.error-message {
+    color: var(--accent-color);
+    background-color: rgba(229, 57, 53, 0.1);
+    padding: 10px;
+    border-radius: var(--border-radius-small);
+    margin-top: 15px;
+    font-weight: 500;
+    border: 1px solid var(--accent-color);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--secondary-card-bg);
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+
+/* --- ADVANCED ANIMATIONS --- */
+
+/* Sunny */
+.weather-card.sunny {
+    background: linear-gradient(135deg, #2a2a2a, #3a3a3a); /* Darker base for sun effect */
+    /* color: var(--text-color-dark); Change if necessary for contrast */
+}
+.weather-card.sunny::before { /* Sun Rays Effect */
+    content: "";
+    position: absolute;
+    top: -50%; right: -50%; /* Position for a corner sun */
+    width: 200%; height: 200%;
+    background: radial-gradient(circle at center, rgba(255, 223, 100, 0.2) 0%, rgba(255,223,100,0.1) 20%, rgba(255,223,100,0) 50%);
+    animation: spinSunRays 60s linear infinite;
+    z-index: 0; /* Behind content */
+    pointer-events: none;
+}
+.weather-card.sunny::after { /* Subtle sun core glow */
+    content: "";
+    position: absolute;
+    top: 10%; right: 10%;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(255,215,0,0) 70%);
+    border-radius: 50%;
+    animation: pulseSun 5s ease-in-out infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes spinSunRays {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes pulseSun {
+    0%, 100% { transform: scale(0.9); opacity: 0.6; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+}
+
+/* Cloudy */
+.weather-card.cloudy {
+    background: linear-gradient(to bottom, #3a4045, #2c3034);
+}
+.cloud {
+    position: absolute;
+    background: rgba(200, 200, 200, 0.15); /* Darker clouds for dark theme */
+    border-radius: 50%;
+    opacity: 0; /* Start hidden, fade in */
+    animation: moveCloud linear infinite, fadeInCloud 1s ease-out forwards;
+    pointer-events: none;
+    z-index: 0;
+}
+.cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: inherit;
+    border-radius: inherit;
+}
+/* Cloud variations will be handled by JS for positioning and sizing */
+
+@keyframes moveCloud {
+    0% { transform: translateX(-150%); } /* Start further off-screen */
+    100% { transform: translateX(150%); } /* Move across */
+}
+@keyframes fadeInCloud {
+    to { opacity: 1; }
+}
+
+
+/* Rainy */
+.weather-card.rainy {
+    background: linear-gradient(to bottom, #2c3e50, #1a252f);
+}
+.raindrop {
+    position: absolute;
+    bottom: 100%;
+    width: 1.5px; /* Thinner raindrops */
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(173, 216, 230, 0), rgba(173, 216, 230, 0.4)); /* Faded top */
+    animation: fall linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+@keyframes fall {
+    0% { transform: translateY(0px) scaleY(0.5); opacity: 0; }
+    5% { opacity: 1; scaleY(1); }
+    95% { opacity: 1; scaleY(1); }
+    100% { transform: translateY(calc(100% + 350px)); opacity: 0; } /* Ensure they fall well past the card */
+}
+
+
+/* Snowy */
+.weather-card.snowy {
+    background: linear-gradient(to bottom, #3a4a5a, #2c3a4a);
+}
+.snowflake {
+    position: absolute;
+    top: -20px;
+    background-color: rgba(230, 230, 250, 0.8); /* Slightly off-white */
+    border-radius: 50%;
+    animation: snowfall linear infinite;
+    pointer-events: none;
+    opacity: 0; /* Start hidden */
+    z-index: 0;
+}
+@keyframes snowfall {
+    0% {
+        transform: translateY(0) translateX(0px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8; /* Fade in */
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(calc(100% + 350px)) translateX(var(--sway-distance, 30px)) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .weather-dashboard {
+        flex-direction: column;
+    }
+    #searched-city-card .card-body {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .main-weather-description {
+        align-self: center;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    .weather-details {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    body { padding: 10px; }
+    .app-container { margin: 0; border-radius: 0; }
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+    #city-search-input { width: calc(100% - 50px); }
+    .weather-dashboard { padding: 15px; }
+    .favorites-grid {
+        grid-template-columns: 1fr; /* Single column for small favorites */
+    }
+    #searched-city-card .city-name { font-size: 1.8em; }
+    .main-temperature { font-size: 3.5em; }
+    .main-weather-description { font-size: 1.2em; }
+    .small-card .city-name { font-size: 1.1em; }
+    .small-card .temperature { font-size: 1.8em; }
+}
+
+@media (max-width: 480px) {
+    header h1 { font-size: 1.5em; }
+    #city-search-input { font-size: 0.8em; }
+    #searched-city-card { padding: 20px; }
+    #searched-city-card .city-name { font-size: 1.6em; }
+    .main-temperature { font-size: 3em; }
+    .main-weather-icon { width: 100px; height: 100px; }
+    .weather-details { gap: 10px; }
+    .detail-item { padding: 8px; }
+    .detail-item span:not(.detail-label) { font-size: 1em; }
+}

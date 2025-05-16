@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleek Weather Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">
+                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="48px" height="48px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v5h-2zm0 6h2v2h-2z"/></svg> <h1>Weather Hub</h1>
+            </div>
+            <div class="search-container">
+                <input type="text" id="city-search-input" placeholder="Search for a city...">
+                <button id="search-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px">
+                        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                </button>
+            </div>
+        </header>
+
+        <main class="weather-dashboard">
+            <section class="main-display-area">
+                <div class="weather-card" id="searched-city-card" style="display: none;">
+                    <div class="card-header">
+                        <h2 class="city-name">Search Result</h2>
+                        <p class="current-time"></p>
+                    </div>
+                    <div class="card-body">
+                        <img src="assets/icons/unknown.svg" alt="Weather Icon" class="weather-icon main-weather-icon">
+                        <p class="temperature main-temperature">--°C</p>
+                        <p class="weather-description main-weather-description">Enter a city</p>
+                    </div>
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Feels like</span>
+                            <span class="feels-like-temp">--°C</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Humidity</span>
+                            <span class="humidity-value">--%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Wind</span>
+                            <span class="wind-speed">-- m/s</span>
+                        </div>
+                    </div>
+                    <div class="error-message" style="display: none;"></div>
+                </div>
+            </section>
+
+            <section class="favorites-area">
+                <h2>Favorite Locations</h2>
+                <div class="favorites-grid">
+                    <div class="weather-card small-card" id="seattle">
+                        <div class="card-header">
+                            <h3 class="city-name">Seattle, WA</h3>
+                        </div>
+                        <div class="card-body-small">
+                            <img src="assets/icons/unknown.svg" alt="Weather Icon" class="weather-icon">
+                            <p class="temperature">--°C</p>
+                        </div>
+                        <p class="weather-description">Loading...</p>
+                        <div class="error-message" style="display: none;"></div>
+                    </div>
+
+                    <div class="weather-card small-card" id="tacoma">
+                        <div class="card-header">
+                            <h3 class="city-name">Tacoma, WA</h3>
+                        </div>
+                        <div class="card-body-small">
+                            <img src="assets/icons/unknown.svg" alt="Weather Icon" class="weather-icon">
+                            <p class="temperature">--°C</p>
+                        </div>
+                        <p class="weather-description">Loading...</p>
+                        <div class="error-message" style="display: none;"></div>
+                    </div>
+
+                    <div class="weather-card small-card" id="sanaa">
+                        <div class="card-header">
+                            <h3 class="city-name">Sana'a, Yemen</h3>
+                        </div>
+                        <div class="card-body-small">
+                            <img src="assets/icons/unknown.svg" alt="Weather Icon" class="weather-icon">
+                            <p class="temperature">--°C</p>
+                        </div>
+                        <p class="weather-description">Loading...</p>
+                        <div class="error-message" style="display: none;"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; <span id="current-year"></span> Weather Hub. Powered by OpenWeatherMap.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
